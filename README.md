@@ -55,7 +55,7 @@ React는 상태 변경 시 새로운 VirtualDOM 트리를 생성하고, 이전 �
 가상 돔은 실제 돔의 형태를 본따 만든 객체 덩어리입니다.
 
 - 실제 돔 구조
-```
+```html
 <div id="app">
   <ul>
     <li>
@@ -77,7 +77,7 @@ React는 상태 변경 시 새로운 VirtualDOM 트리를 생성하고, 이전 �
 ```
 
 - 가상 돔 구조
-```
+```javascript
 function virtualDom(type, props, ...children) {
   return { type, props, children: children.flat() }
 }
@@ -132,7 +132,7 @@ diff는 두 개의 파일 또는 문서 간의 차이점을 식별하는 알고�
 이로 인해 `eventType` 중심으로 설계를 변경하여 문제 해결을 할 수 있었습니다.
 
 - AS-IS
-```
+```javascript
 const eventListeners = new Map();
 
 export function removeEvent(element, eventType, handler) { 
@@ -157,7 +157,7 @@ export function removeEvent(element, eventType, handler) {
 ```
 
 - TO-BE
-```
+```javascript
 const eventListeners = new Map();
 export function removeEvent(element, eventType, handler) {
   const handlersMap = eventListeners.get(eventType);
@@ -189,7 +189,7 @@ export function removeEvent(element, eventType, handler) {
 `updateElement` 부분에서 diff 알고리즘을 사용하여 변경된 속성이나 태그를 업데이트하는 과정을 구현한 부분입니다.<br/>
 먼저 어떤 로직을 만들어야하는지 정의하고, 하나씩 코드를 구성하여 내용을 정리했습니다. 
 
-```
+```javascript
 export function updateElement(parentElement, newNode, oldNode, index = 0) {
   const existingNode = parentElement?.childNodes[index];
 
